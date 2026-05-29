@@ -1,0 +1,27 @@
+# application-dev.yml  — activate with: --spring.profiles.active=dev
+spring:
+  jpa:
+    show-sql: true
+
+  security:
+    require-ssl: false
+
+neuralshield:
+  jwt:
+    secret: dev-only-secret-do-not-use-in-production-must-be-32-chars-min
+    expiry-ms: 86400000    # 24 hours for easier local testing
+  api-key:
+    value: dev-api-key-local
+  rate-limit:
+    capacity: 1000
+    refill-per-minute: 500
+
+springdoc:
+  swagger-ui:
+    enabled: true          # Enable Swagger UI in dev
+
+logging:
+  level:
+    com.neuralshield: DEBUG
+    org.springframework.security: DEBUG
+    org.flywaydb: DEBUG
